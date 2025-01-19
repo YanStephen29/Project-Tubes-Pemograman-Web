@@ -1,0 +1,27 @@
+.form-checkbox {
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    font-size: 1.5em;
+    width: 1em;
+    height: 1em;
+    border: 1px solid #ccc;
+    border-radius: 0.25em;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+}
+
+.form-checkbox:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.form-checkbox:checked::before {
+    content: '';
+    width: 0.65em;
+    height: 0.65em;
+    clip-path: polygon(14% 44%, 50% 80%, 86% 20%, 75% 11%, 50% 54%, 31% 33%);
+    transform: scale(1.2);
+    background-color: #fff;
+}
