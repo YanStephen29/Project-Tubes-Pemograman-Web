@@ -120,10 +120,29 @@ class RestaurantController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
+            // Regenerasi session untuk keamanan
             $request->session()->regenerate();
-            return redirect()->route(Auth::user()->role . '.home');
+    
+            // Ambil data role pengguna dari database
+            $role = Auth::user()->role;
+    
+            // Arahkan pengguna ke halaman beranda sesuai role
+            if ($role === 'customer') {
+                return redirect()->route('customer.home');
+            } elseif ($role === 'restaurant') {
+                return redirect()->route('restaurant.home');
+            } else {
+                // Jika role tidak valid, logout dan kembali ke halaman login
+                Auth::logout();
+                return redirect()->route('login')->withErrors([
+                    'role' => 'Invalid user role. Please contact support.',
+                ]);
+            }
         }
-
-        return back()->withErrors(['email' => 'The provided credentials do not match our records.']);
+    
+        // Jika autentikasi gagal, kembalikan ke halaman login dengan pesan error
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
     }
 }

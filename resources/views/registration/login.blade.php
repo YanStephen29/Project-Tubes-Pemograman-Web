@@ -7,8 +7,8 @@
     <div class="bg-white m-2 p-6 rounded-lg shadow-md flex flex-col items-center justify-center border-2">
         <form action="{{route('login')}}" method="POST">
             @csrf
-            <input type="text" placeholder="Username" class="block w-80 h-12 p-6 mb-4 border-2 mt-2 focus:border-orange-500 focus:ring-orange-500">
-            <input type="password" placeholder="Password" class="block w-80 h-12 p-5 ml- mb-4 border-2 mt-2 focus:border-orange-500 focus:ring-orange-500">            <div class="flex flex-col items-center">
+            <input type="email" name="email" placeholder="Email" class="block w-80 h-12 p-6 mb-4 border-2 mt-2 focus:border-orange-500 focus:ring-orange-500">
+            <input type="password" name="password" placeholder="Password" class="block w-80 h-12 p-5 ml- mb-4 border-2 mt-2 focus:border-orange-500 focus:ring-orange-500">            <div class="flex flex-col items-center">
                 <a href="{{route('register')}}" class="text-orange-500 hover:underline mb-6">Forgot password?</a>
                 <button type="submit" class="bg-orange-500 hover:bg-orange-600 text-white py-4 rounded-full w-auto px-20 shadow-lg">Login</button>
             </div>

@@ -39,3 +39,7 @@ Route::get('/customer/home', function () {
 Route::get('/restaurant/home', function () {
     return view('resto.berandaResto');
 })->name('restaurant.home')->middleware('auth');
+
+// Route untuk redirect ke penyedia di bagian register(login with)
+Route::get('/auth/redirect/{provider}', [SocialiteController::class, 'redirect'])->name('socialite.redirect');
+Route::get('/auth/callback/{provider}', [SocialiteController::class, 'callback'])->name('socialite.callback');
