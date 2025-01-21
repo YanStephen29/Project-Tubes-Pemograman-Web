@@ -16,4 +16,15 @@ class Restaurant extends Model
     {
         return $this->belongsToMany(Category::class, 'category_restaurant');
     }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    // Tambahkan relasi ini
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }
