@@ -7,7 +7,7 @@
         <h2 class="text-xl font-bold text-gray-700 mb-4">Edit Product</h2>
         
         <!-- Form -->
-        <form id="editForm" action="" method="POST" enctype="multipart/form-data">
+        <form id="editForm" action="{{ route('products.update', ':id') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             

@@ -30,6 +30,13 @@ Route::get('/login', [RestaurantController::class, 'showLoginForm'])->name('logi
 // Proses login
 Route::post('/login', [RestaurantController::class, 'login'])->name('login.submit');
 
+//Untuk Logout
+Route::post('/logout', [RestaurantController::class, 'logout'])->name('logout');
+
+// Untuk Hapus Akun Role Restautant
+Route::delete('/restaurant/delete/{id}', [RestaurantController::class, 'deleteRestaurant'])->name('restaurant.delete');
+
+
 // Beranda untuk customer
 Route::get('/customer/home', function () {
     return view('customer.berandaCustomer');
@@ -56,4 +63,18 @@ Route::put('/restaurant/products/update/{id}', [RestaurantController::class, 'up
 Route::delete('/restaurant/products/{id}', [RestaurantController::class, 'deleteProduct'])->name('products.destroy');
 Route::post('/restaurant/products', [RestaurantController::class, 'storeProduct'])->name('products.store');
 
+// Rute untuk memproses update profil
+Route::put('/profile/update/resto', [RestaurantController::class, 'updateRestaurantProfile'])->name('profile.update.resto');
+Route::put('/profile/update/customer', [RestaurantController::class, 'updateCustomerProfile'])->name('profile.update.customer');
+Route::get('/editprofile-resto', [RestaurantController::class, 'editRestaurantProfile'])->name('editprofile.resto')->middleware('auth');
 
+Route::get('/restaurant/orders', [RestaurantController::class, 'showOrders'])->name('restaurant.orders')->middleware('auth');
+
+//Untuk show orders
+Route::get('/restaurant/orders', [RestaurantController::class, 'showOrders'])->name('restaurant.orders')->middleware('auth');
+
+//Rute untuk update profil
+Route::get('/editprofile-customer', [RestaurantController::class, 'editCustomerProfile'])->name('editprofile.customer')->middleware('auth');
+
+//Route Hapus Customer
+Route::delete('/customer/delete', [RestaurantController::class, 'deleteCustomer'])->name('profile.delete.customer');
